@@ -3,7 +3,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Copy as CopyIcon } from "lucide-react"
+import { Copy } from "lucide-react";
 
 type LatexPanelProps = {
   latex: string;
@@ -29,7 +29,7 @@ export default function LatexPanel({ latex }: LatexPanelProps) {
               variant="outline"
               className="absolute top-2 right-2"
             >
-              <CopyIcon className="h-4 w-4 mr-2" />
+              <Copy className="h-4 w-4 mr-2" />
               Copy
             </Button>
             <pre className="h-full p-4 bg-gray-100 rounded-lg overflow-auto">

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(request: Request) {
 
@@ -16,8 +16,16 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       }
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        console.error('Missing Gemini API key');
+        return NextResponse.json(
+          { error: 'Server configuration error' },
+          { status: 500 }
+        );
+      }
 
-      const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+      const genAI = new GoogleGenerativeAI(apiKey);
       //console.log("got key")
       const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
       //console.log("got model")
