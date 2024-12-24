@@ -1,0 +1,5 @@
+export async function POST(request: Request) {
+    return new Response('Hello from the API!', {
+      status: 200,
+    });
+  }
